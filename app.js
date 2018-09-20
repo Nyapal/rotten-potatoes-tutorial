@@ -1,42 +1,19 @@
 const express = require('express');
-const app = express();
-const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-
+const methodOverride = require('method-override');
+const reviews = require('./controllers/reviews.js');
+const app = express();
 var exphbs = require('express-handlebars');
-
-mongoose.connect('mongodb://localhost/rotten-potatoes', { useMongoClient: true });
-
-const Review = mongoose.model('Review', {
-  title: String,
-  description: String,
-  movieTitle: String
-});
 
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride('_method'))
 
-app.get('/', (req, res) => {
-    Review.find()
-        .then(reviews => {
-            res.render('reviews-index', {reviews: reviews});
-        })
-        .catch(err => {console.log(err);
-        })
-    })
-app.get('/reviews/new', (req, res) => {
-    res.render('reviews-new', {});
-})
-app.post('/reviews', (req, res) => {
-  Review.create(req.body).then((review) => {
-      console.log(review);
-      res.redirect('/');
-  }).catch((err) => {
-      console.log(err.message)
-  })
-})
+reviews(app)
 
 app.listen(3000, () => {
     console.log('App listening on port 3000!')
 })
+
+module.exports = app;
