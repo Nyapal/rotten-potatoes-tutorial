@@ -3,7 +3,9 @@ const chaiHttp = require('chai-http');
 const server = require('../app');
 const should = chai.should();
 const Review = require('../models/review');
+
 const sampleMovieId = '2143056897'
+
 const sampleReview = {
     "title": 'Sample Data',
     "movie-title": 'Test Movie',
