@@ -4,7 +4,7 @@ const methodOverride = require('method-override');
 const reviews = require('./controllers/reviews.js');
 
 const app = express();
-const Reivew = require('./models/review')
+const Review = require('./models/review')
 const Comment = require('./models/comment')
 var exphbs = require('express-handlebars');
 
