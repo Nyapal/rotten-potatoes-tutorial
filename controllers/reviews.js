@@ -1,4 +1,5 @@
 const Review = require('../models/review.js');
+const Comment = require('../models/comment.js');
 
 function reviews (app) {
     app.get('/', (req, res) => {
@@ -34,6 +35,13 @@ function reviews (app) {
       }).catch((err) => {
           console.log(err.message)
       })
+    })
+    app.post('/reviews/comments', (req, res) => {
+        Comment.create(req.body).then(comment => {
+            res.redirect(`/reviews/${comment.reviewId}`)
+        }).catch((err) => {
+            console.log(err.message)
+        })
     })
     app.put('/reviews/:id', (req, res) => {
       Review.findByIdAndUpdate(req.params.id, req.body)
