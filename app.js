@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const reviews = require('./controllers/reviews.js');
-
+const comments = require('./controllers/comments.js')
 const app = express();
 const Review = require('./models/review')
 const Comment = require('./models/comment')
