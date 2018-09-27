@@ -13,14 +13,4 @@ function movies (app) {
     })
 }
 
-
-
-// app.get('/', (req, res) => {
-//     moviedb.searchMovie({query: 'Alien'}).then(response => {
-//         res.render('movies-index', {movies: response.results})
-//     }).catch(err => {
-//         console.log(err)
-//     })
-// })
-
 module.exports = movies
