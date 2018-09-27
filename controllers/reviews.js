@@ -2,15 +2,15 @@ const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
 
 function reviews (app) {
-    app.get('/', (req, res) => {
-        Review.find()
-            .then(reviews => {
-                res.render('reviews-index', {reviews: reviews});
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    });
+    // app.get('/', (req, res) => {
+    //     Review.find()
+    //         .then(reviews => {
+    //             res.render('reviews-index', {reviews: reviews});
+    //         })
+    //         .catch(err => {
+    //             console.log(err);
+    //         });
+    // });
     app.get('/reviews/new', (req, res) => {
         res.render('reviews-new', {});
     })
@@ -36,13 +36,6 @@ function reviews (app) {
           console.log(err.message)
       })
     })
-    app.post('/reviews/comments', (req, res) => {
-        Comment.create(req.body).then(comment => {
-            res.redirect(`/reviews/${comment.reviewId}`)
-        }).catch((err) => {
-            console.log(err.message)
-        })
-    })
     app.put('/reviews/:id', (req, res) => {
       Review.findByIdAndUpdate(req.params.id, req.body)
         .then(review => {
@@ -59,14 +52,6 @@ function reviews (app) {
       }).catch((err) => {
         console.log(err.message);
       })
-    })
-    app.delete('/reviews/comments/:id', function (req, res) {
-        console.log("DELETE comment")
-        Comment.findByIdAndRemove(req.params.id).then((comment) => {
-            res.redirect(`/reviews/${comment.reviewId}`);
-        }).catch((err) => {
-            console.log(err.message)
-        })
     })
 }
 
