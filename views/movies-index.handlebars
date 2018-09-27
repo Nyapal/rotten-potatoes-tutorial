@@ -1,0 +1,16 @@
+<h1> Now Playing </h1>
+
+<div class="row">
+    {{#each movies}}
+        <div class="col-sm-3">
+            <a href="/movies/{{this.id}}">
+                <img style="width: 100px" src="https://image.tmdb.org/t/p/w500/{{this.poster_path}}">
+                <p style="list-style-type: none;">{{this.title}}</p>
+            </a>
+        </div>
+    {{/each}}
+</div>
+
+    <!-- <a href="/movies/{{this._id}}">
+        <img src="{{this.baseUrl}}w92{{this.poster_path}}" />
+    </a> -->
