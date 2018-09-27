@@ -1,4 +1,5 @@
-const Comment = require('../models/comment.js')
+const Review = require('../models/review.js');
+const Comment = require('../models/comment.js');
 
 function comments (app) {
     app.post('/reviews/comments', (req, res) => {
