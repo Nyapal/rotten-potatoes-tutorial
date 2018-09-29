@@ -5,22 +5,11 @@ const Comment = require('../models/comment.js');
 
 function movies (app) {
     app.get('/', (req, res) => {
-        moviedb.searchMovie({ query: 'The Lion King' }).then(response => {
+        moviedb.miscNowPlayingMovies().then(response => {
             console.log({movies: response.results})
             res.render('movies-index', {movies: response.results})
         }).catch(console.error)
     })
 }
-
-
-
-// app.get('/', (req, res) => {
-//     moviedb.searchMovie({query: 'Alien'}).then(response => {
-//     //moviedb.miscNowPlayingMovies().then(response => {
-//         res.render('movies-index', {movies: response.results})
-//     }).catch(err => {
-//         console.log(err)
-//     })
-// })
 
 module.exports = movies
