@@ -6,7 +6,6 @@ const Comment = require('../models/comment.js');
 function movies (app) {
     app.get('/', (req, res) => {
         moviedb.miscNowPlayingMovies().then(response => {
-        //moviedb.mi({ query: 'The Lion King' }).then(response => {
             console.log({movies: response.results})
             res.render('movies-index', {movies: response.results})
         }).catch(console.error)
