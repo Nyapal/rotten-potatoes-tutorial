@@ -2,17 +2,8 @@ const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
 
 function reviews (app) {
-    // app.get('/', (req, res) => {
-    //     Review.find()
-    //         .then(reviews => {
-    //             res.render('reviews-index', {reviews: reviews});
-    //         })
-    //         .catch(err => {
-    //             console.log(err);
-    //         });
-    // });
-    app.get('/reviews/new', (req, res) => {
-        res.render('reviews-new', {});
+    app.get(`/movies/:movieId/reviews/new`, (req, res) => {
+        res.render('reviews-new', {movieId: req.params.movieId});
     })
     app.get('/reviews/:id', (req, res) => {
         Review.findById(req.params.id).then((review) => {
@@ -35,6 +26,9 @@ function reviews (app) {
       }).catch((err) => {
           console.log(err.message)
       })
+    })
+    app.post('/movies/:movieId/reviews', (req, res) => {
+        console.log(req.body)
     })
     app.put('/reviews/:id', (req, res) => {
       Review.findByIdAndUpdate(req.params.id, req.body)
