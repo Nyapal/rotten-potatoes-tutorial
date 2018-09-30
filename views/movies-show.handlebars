@@ -1,0 +1,15 @@
+<div class="container">
+  <a href="/movies/{{movie.id}}/reviews/new" class="btn btn-primary"> Write Review</a>
+
+  <div class="row">
+      <div class="col-sm-4">
+          <h1>{{movie.title}}</h1>
+          <p>{{movie.overview}}</p>
+      </div>
+  </div>
+
+  <h3> Reviews </h3>
+  {{#each reviews}}
+    {{> review}}
+    {{/each}}
+</div>

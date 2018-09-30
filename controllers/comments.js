@@ -1,4 +1,3 @@
-const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
 
 function comments (app) {
@@ -10,9 +9,8 @@ function comments (app) {
         })
     })
     app.delete('/reviews/comments/:id', function (req, res) {
-        console.log("DELETE comment")
         Comment.findByIdAndRemove(req.params.id).then((comment) => {
-            res.redirect(`/reviews/${comment.reviewId}`);
+            res.status(200).send(comment);
         }).catch((err) => {
             console.log(err.message)
         })

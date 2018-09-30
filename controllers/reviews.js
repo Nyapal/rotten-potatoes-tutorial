@@ -1,9 +1,11 @@
 const Review = require('../models/review.js');
 const Comment = require('../models/comment.js');
+const MovieDb = require('moviedb-promise');
+const moviedb = new MovieDb('68eb466ca897baf7a62975f97c5f32bc')
 
 function reviews (app) {
-    app.get(`/movies/:movieId/reviews/new`, (req, res) => {
-        res.render('reviews-new', {movieId: req.params.movieId});
+    app.get('/movies/:movieId/reviews/new', (req, res) => {
+        res.render('reviews-new', {movieId: req.params.movieId, movie: movie});
     })
     app.get('/reviews/:id', (req, res) => {
         Review.findById(req.params.id).then((review) => {

@@ -1,11 +1,21 @@
 <div class="row">
-  <div class="col-sm-6 col-sm-offset-3">
-    <form method="POST" action="/reviews">
+  <div class="col-sm-6">
+    <h1> Review {{movie.title}}</h1>
+
+    <form method="POST" action="/movies/{{movie.Id}}/reviews">
       {{> reviews-form}}
+      <input type="hidden" name="movie_id" value="{{movie_id}}">
+      <input type="hidden" name="movie_title" value="{{movie.title}}"
+
       <!-- BUTTON -->
       <div class="form-group">
         <button class="btn btn-primary" type="submit">Save Review</button>
       </div>
+    </form>
+    <form method="GET" action="movies/{{movieId}}">
+        <div class="form-group">
+            <button class="btn btn-primary" type="cancel" name="button">Cancel</button>
+        </div>
     </form>
   </div>
 </div>
